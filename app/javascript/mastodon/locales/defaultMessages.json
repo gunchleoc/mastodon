@@ -40,7 +40,7 @@
         "id": "notification.mention"
       },
       {
-        "defaultMessage": "{count} notifications",
+        "defaultMessage": "{count, plural, one {{count} notification} other {{count} notifications}}",
         "id": "notifications.group"
       }
     ],
