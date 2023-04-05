@@ -23,7 +23,8 @@ You can submit translations via [Crowdin](https://crowdin.com/project/mastodon).
 
 We also use the following Ruby packages that need to be translated:
 
-- [rails-i18n](https://github.com/svenfuchs/rails-i18n)
+- [rails-i18n](https://github.com/svenfuchs/rails-i18n) for Date formatting
+- [kaminari](https://github.com/kaminari/kaminari) for pagination
 
 ## Pull requests
 
