@@ -21,6 +21,10 @@ You can submit translations via [Crowdin](https://crowdin.com/project/mastodon).
 
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)](https://crowdin.com/project/mastodon)
 
+We also use the following Ruby packages that need to be translated:
+
+- [rails-i18n](https://github.com/svenfuchs/rails-i18n)
+
 ## Pull requests
 
 **Please use clean, concise titles for your pull requests.** Unless the pull request is about refactoring code, updating dependencies or other internal tasks, assume that the person reading the pull request title is not a programmer or Mastodon developer, but instead a Mastodon user or server administrator, and **try to describe your change or fix from their perspective**. We use commit squashing, so the final commit in the main branch will carry the title of the pull request, and commits from the main branch are fed into the changelog. The changelog is separated into [keepachangelog.com categories](https://keepachangelog.com/en/1.0.0/), and while that spec does not prescribe how the entries ought to be named, for easier sorting, start your pull request titles using one of the verbs "Add", "Change", "Deprecate", "Remove", or "Fix" (present tense).
