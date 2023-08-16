@@ -172,6 +172,7 @@ module Mastodon
       :ug,
       :uk,
       :ur,
+      :uz,
       :vi,
       :zgh,
       :'zh-CN',
