@@ -25,6 +25,9 @@ class Instance < ApplicationRecord
 
   scope :searchable, -> { where.not(domain: DomainBlock.select(:domain)) }
   scope :matches_domain, ->(value) { where(arel_table[:domain].matches("%#{value}%")) }
+  # TODO: where do I get the actual value from?
+  scope :matches_public_comment, ->(domains) { where(domain: domains).where(domain_blocks_public_comment("#{sanitize_sql_like('test')}%")) }
+  scope :matches_private_comment, ->(domains) { where(domain: domains).where(domain_blocks_private_comment("#{sanitize_sql_like('test')}%")) }
   scope :domain_starts_with, ->(value) { where(arel_table[:domain].matches("#{sanitize_sql_like(value)}%", false, true)) }
   scope :by_domain_and_subdomains, ->(domain) { where("reverse('.' || domain) LIKE reverse(?)", "%.#{domain}") }
   scope :with_domain_follows, ->(domains) { where(domain: domains).where(domain_account_follows) }
@@ -37,6 +40,27 @@ class Instance < ApplicationRecord
           FROM follows
           JOIN accounts ON follows.account_id = accounts.id OR follows.target_account_id = accounts.id
           WHERE accounts.domain = instances.domain
+        )
+      SQL
+    )
+  end
+
+  # TODO: running this SQL manually will return a list of domains. Why doesn't it work here?
+  def self.domain_blocks_public_comment(_public_comment)
+    Arel.sql(
+      <<~SQL.squish
+        EXISTS (
+          SELECT domain FROM domain_blocks WHERE public_comment LIKE public_comment
+        )
+      SQL
+    )
+  end
+
+  def self.domain_blocks_private_comment(_private_comment)
+    Arel.sql(
+      <<~SQL.squish
+        EXISTS (
+          SELECT domain FROM domain_blocks WHERE private_comment LIKE private_comment
         )
       SQL
     )

@@ -4,6 +4,8 @@ class InstanceFilter
   KEYS = %i(
     limited
     by_domain
+    public_comment
+    private_comment
     availability
   ).freeze
 
@@ -33,6 +35,10 @@ class InstanceFilter
       Instance.joins(:domain_allow).reorder(Arel.sql('domain_allows.id desc'))
     when 'by_domain'
       Instance.matches_domain(value)
+    when 'public_comment'
+      Instance.matches_public_comment(value)
+    when 'private_comment'
+      Instance.matches_private_comment(value)
     when 'availability'
       availability_scope(value)
     else
