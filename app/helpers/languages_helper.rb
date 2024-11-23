@@ -62,6 +62,7 @@ module LanguagesHelper
     ga: ['Irish', 'Gaeilge'].freeze,
     gd: ['Scottish Gaelic', 'Gàidhlig'].freeze,
     gl: ['Galician', 'galego'].freeze,
+    gsw: ['Swiss German', 'Schwiizertütsch'].freeze,
     gu: ['Gujarati', 'ગુજરાતી'].freeze,
     gv: ['Manx', 'Gaelg'].freeze,
     ha: ['Hausa', 'هَوُسَ'].freeze,
